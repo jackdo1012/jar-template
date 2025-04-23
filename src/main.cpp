@@ -98,55 +98,48 @@ void pre_auton()
     vexcodeInit();
     default_constants();
 
-    chassis.set_coordinates(0, 0, 0);
-    odom_test();
+    wait(100, msec);
 
-    // while (!auto_started)
-    // {
-    //     Brain.Screen.clearScreen();
-    //     Brain.Screen.printAt(5, 20, "JAR Template v1.2.0");
-    //     Brain.Screen.printAt(5, 40, "Battery Percentage:");
-    //     Brain.Screen.printAt(5, 60, "%d", Brain.Battery.capacity());
-    //     Brain.Screen.printAt(5, 80, "Chassis Heading Reading:");
-    //     Brain.Screen.printAt(5, 100, "%f", chassis.get_absolute_heading());
-    //     Brain.Screen.printAt(5, 120, "Selected Auton:");
-    //     switch (current_auton_selection)
-    //     {
-    //         case 0:
-    //             Brain.Screen.printAt(5, 140, "Auton 1");
-    //             break;
-    //         case 1:
-    //             Brain.Screen.printAt(5, 140, "Auton 2");
-    //             break;
-    //         case 2:
-    //             Brain.Screen.printAt(5, 140, "Auton 3");
-    //             break;
-    //         case 3:
-    //             Brain.Screen.printAt(5, 140, "Auton 4");
-    //             break;
-    //         case 4:
-    //             Brain.Screen.printAt(5, 140, "Auton 5");
-    //             break;
-    //         case 5:
-    //             Brain.Screen.printAt(5, 140, "Auton 6");
-    //             break;
-    //         case 6:
-    //             Brain.Screen.printAt(5, 140, "Auton 7");
-    //             break;
-    //     }
-    //     if (Brain.Screen.pressing())
-    //     {
-    //         while (Brain.Screen.pressing())
-    //         {
-    //         }
-    //         current_auton_selection++;
-    //     }
-    //     else if (current_auton_selection == 8)
-    //     {
-    //         current_auton_selection = 0;
-    //     }
-    //     task::sleep(10);
-    // }
+    while (!auto_started)
+    {
+        Brain.Screen.clearScreen();
+        Brain.Screen.printAt(5, 20, "JAR Template v1.2.0");
+        Brain.Screen.printAt(5, 40, "Battery Percentage:");
+        Brain.Screen.printAt(5, 60, "%d", Brain.Battery.capacity());
+        Brain.Screen.printAt(5, 80, "Chassis Heading Reading:");
+        Brain.Screen.printAt(5, 100, "%f", chassis.get_absolute_heading());
+        Brain.Screen.printAt(5, 120, "Selected Auton:");
+        switch (current_auton_selection)
+        {
+            case 0:
+                Brain.Screen.printAt(5, 140, "Baker Blue");
+                break;
+            case 1:
+                Brain.Screen.printAt(5, 140, "Baker Red");
+                break;
+            case 2:
+                Brain.Screen.printAt(5, 140, "Ring Rush Blue");
+                break;
+            case 3:
+                Brain.Screen.printAt(5, 140, "Ring Rush Red");
+                break;
+            case 4:
+                Brain.Screen.printAt(5, 140, "Solo AWP");
+                break;
+        }
+        if (Brain.Screen.pressing())
+        {
+            while (Brain.Screen.pressing())
+            {
+            }
+            current_auton_selection++;
+        }
+        else if (current_auton_selection == 5)
+        {
+            current_auton_selection = 0;
+        }
+        task::sleep(10);
+    }
 }
 
 /**
@@ -162,25 +155,19 @@ void autonomous(void)
     switch (current_auton_selection)
     {
         case 0:
-            drive_test();
+            baker_blue();
             break;
         case 1:
-            drive_test();
+            baker_red();
             break;
         case 2:
-            turn_test();
+            ring_rush_blue();
             break;
         case 3:
-            swing_test();
+            ring_rush_red();
             break;
         case 4:
-            full_test();
-            break;
-        case 5:
-            odom_test();
-            break;
-        case 6:
-            tank_odom_test();
+            solo_awp();
             break;
     }
 }

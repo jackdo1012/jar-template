@@ -35,11 +35,11 @@ void Odom::set_physical_distances(float ForwardTracker_center_distance, float Si
 void Odom::set_position(float X_position, float Y_position, float orientation_deg, float ForwardTracker_position,
                         float SidewaysTracker_position)
 {
-    this->ForwardTracker_position = ForwardTracker_position;
-    this->SideWaysTracker_position = SidewaysTracker_position;
     this->X_position = X_position;
     this->Y_position = Y_position;
     this->orientation_deg = orientation_deg;
+    this->ForwardTracker_position = ForwardTracker_position;
+    this->SideWaysTracker_position = SidewaysTracker_position;
 }
 
 /**
