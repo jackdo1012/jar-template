@@ -4,15 +4,30 @@ using namespace vex;
 using signature = vision::signature;
 using code = vision::code;
 
-// A global instance of brain used for printing to the V5 Brain screen.
-brain  Brain;
+brain Brain;
+controller Controller;
 
-//The motor constructor takes motors as (port, ratio, reversed), so for example
-//motor LeftFront = motor(PORT1, ratio6_1, false);
+vex::motor intMot = vex::motor(vex::PORT17, false);
+vex::motor arm1Mot = vex::motor(vex::PORT18, true);
+vex::motor arm2Mot = vex::motor(vex::PORT19, false);
 
-//Add your devices below, and don't forget to do the same in robot-config.h:
+vex::digital_out clampPis = vex::digital_out(Brain.ThreeWirePort.A);
+vex::digital_out lDoinkerPis = vex::digital_out(Brain.ThreeWirePort.B);
+vex::digital_out rDoinkerPis = vex::digital_out(Brain.ThreeWirePort.C);
+vex::digital_out ptoPis = vex::digital_out(Brain.ThreeWirePort.D);
+vex::digital_out intLiftPis = vex::digital_out(Brain.ThreeWirePort.E);
 
+vision colorSensor = vision(PORT6);
+vex::inertial Inertial = vex::inertial(vex::PORT14);
 
-void vexcodeInit( void ) {
-  // nothing to initialize
+vex::motor l1Mot = vex::motor(vex::PORT10, false);
+vex::motor l2Mot = vex::motor(vex::PORT8, true);
+vex::motor l3Mot = vex::motor(vex::PORT15, true);
+vex::motor r1Mot = vex::motor(vex::PORT11, true);
+vex::motor r2Mot = vex::motor(vex::PORT16, false);
+vex::motor r3Mot = vex::motor(vex::PORT9, false);
+
+void vexcodeInit(void)
+{
+    // nothing to initialize
 }
